@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<script src="https://cdn.tailwindcss.com"></script>-->
+    <link rel="stylesheet" href="input.css" />
+    <title>Auto AutoCheck-Outs</title>
+  </head>
+  <body>
+    <nav class="px-4 py-4 bg-green-900 text-white flex justify-center">
+      <!--giving margin of 4rem on x-axis-->
+      <ul class="px-28 py-4 flex space-x-11 justify-center">
+      <li class="mx-3 cursor-pointer font-serif"><a href="userinfo.html">MyInfo</a></li>
+        <li class="mx-3 cursor-pointer font-serif"><a href="wallet.html">Wallet</a></li>
+        <li>
+          <button
+            class="cursor-pointer bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300"
+          ><a>Sign Out
+          </button></a>    
+        </li>
+      </ul>
+    </nav>
+    <main class="bg-fuchsia-100 justify-around">
+      <div class="main bg-gray-300 py-10">
+        <div class="text-3xl">
+          <h1 class="text-purple-900 text-center font-bold">Auto Check-Outs</h1>
+        </div>
+        <p class="px-6 py-3 text-center">
+          Welcome Back! You can check your transaction history and generate your
+          invoice by clicking on the respective buttons given below. Similarly,
+          you can navigate to your personal info and check your wallet balance
+          by clicking on the links in the navigation bar. We are a growing
+          community and we would love your suggestions that we can implement for
+          better experience. If you have any suggestions, you can write to us at
+          the given email address. Thank You! Happy Shopping!
+        </p>
+        <div class="my-4 flex items-center">
+          <button
+            class="bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300 mx-4"
+          >
+            Transaction History
+          </button>
+          <button
+            class="bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300 mx-4"
+          >
+            Generate Invoice
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
