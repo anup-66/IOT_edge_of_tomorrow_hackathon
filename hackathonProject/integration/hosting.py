@@ -13,23 +13,38 @@ def home():
 #     # value = request.get_data()
 #     return render_template("index.html")
 
+
 @app.route("/predicted_val", methods=["POST"])
 def display_text():
-    # text = request.form["text"]
-    value = request.get_data(request)
-    # value={"name":"pepsi","price":35}
-    print(value)
-    if len(value)==3:
-        return render_template("predicted_val.html",data1=value[0][0],data2=value[0][1],data3 = value[1][0],data4 = value[1][1],total=value[2][1])
-    elif len(value)==4:
-        return render_template("predicted_val.html",data1=value[0][0],data2=value[0][1],data3 = value[1][0],data4 = value[1][1],data5 = value[2][0],data6 = value[2][1],total=value[3][1])
-    elif len(value) == 2:
-        return render_template("predicted_val.html", data1=value[0][0], data2=value[0][1],
-                               total=value[1][1])
-    elif len(value)==5:
-        return render_template("predicted_val.html",data1=value[0][0],data2=value[0][1],data3 = value[1][0],data4 = value[1][1],data5 = value[2][0],data6 = value[2][1],data7 = value[3][0],data8 = value[3][1],total=value[4][1])
-    else:
-        return render_template("predicted_val.html",total = 0)
+    values = request.get_data(request)
+    print(values)
+    # List = []
+    # for value in values:
+    #     if List and value['name'] in [item['name'] for item in List]:
+    #         for item in List:
+    #             if item['name'] == value['name']:
+    #                 item['price'] += int(value['price'])
+    #                 # break
+    #     else:
+    #         List.append({'name': value['name'], 'price': int(value['price'])})
+    totals = {}
+    for value in values:
+        name = value['name']
+        price = int(value['price'])
+        if name in totals:
+            totals[name] += price
+        else:
+            totals[name] = price
+
+    List = [{'name': name, 'price': price} for name, price in totals.items()]
+    print(List)
+
+    total = 0
+
+    for value in values:
+        if 'price' in value:
+            total = total + value['price']
+    return render_template("predicted_val.html",values = List,total = total)
 
 if __name__ == "__main__":
     app.run(debug=True)
