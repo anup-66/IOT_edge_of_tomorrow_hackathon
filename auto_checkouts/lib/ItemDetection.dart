@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'ItemDetail.dart';
 import 'ItemCard.dart';
+import 'BillGeneration.dart';
 
 class ItemDetection extends StatefulWidget {
   final List<ItemDetail> itemList;
@@ -13,6 +14,33 @@ class ItemDetection extends StatefulWidget {
 }
 
 class _ItemDetectionState extends State<ItemDetection> {
+  double billList(List<ItemDetail> L) {
+    // Map<String, double> map = {};
+    // List<ItemDetail> arr = [];
+    // map[L[0].productID] = L[0].price;
+    // arr.add(L[0]);
+    // for (int i = 1; i < L.length; i++) {
+    //   for (int j = 0; j < arr.length; j++) {
+    //     if (arr[j].productID == L[i].productID) {
+    //       arr[j].price = arr[j].price + widget.itemList[i].price;
+    //       break;
+    //     }
+    //   }
+    //   for (int i = 1; i < L.length; i++) {
+    //     if (map.keys.contains(L[i].productID)) {
+    //       map[L[i].productID] = map[L[i].productID] + L[i].price;
+    //     }
+    //   }
+    //   arr.add(widget.itemList[i]);
+    // }
+
+    double total = 0.0;
+    for (int i = 0; i < L.length; i++) {
+      total += L[i].price;
+    }
+    return total;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +49,7 @@ class _ItemDetectionState extends State<ItemDetection> {
         title: const Text("Items"),
         backgroundColor: Colors.indigo[900],
         centerTitle: true,
+        elevation: 10.0,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -36,7 +65,13 @@ class _ItemDetectionState extends State<ItemDetection> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      BillGeneration(billList: billList(widget.itemList))));
+        },
         backgroundColor: Colors.indigo[900],
         child: const Icon(
           Icons.arrow_right_alt_outlined,

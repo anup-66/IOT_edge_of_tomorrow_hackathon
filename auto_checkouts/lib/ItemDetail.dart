@@ -2,7 +2,9 @@
 
 class ItemDetail {
   String imageName;
-  int price;
+  double price;
   String imagePath;
-  ItemDetail({required this.imageName, required this.price, required this.imagePath});
+  String productID;
+  ItemDetail(
+      {required this.imageName, required this.price, required this.imagePath, required this.productID});
 }
