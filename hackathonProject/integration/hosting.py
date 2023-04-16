@@ -18,15 +18,6 @@ def home():
 def display_text():
     values = request.get_data(request)
     print(values)
-    # List = []
-    # for value in values:
-    #     if List and value['name'] in [item['name'] for item in List]:
-    #         for item in List:
-    #             if item['name'] == value['name']:
-    #                 item['price'] += int(value['price'])
-    #                 # break
-    #     else:
-    #         List.append({'name': value['name'], 'price': int(value['price'])})
     totals = {}
     for value in values:
         name = value['name']
@@ -47,6 +38,6 @@ def display_text():
     return render_template("predicted_val.html",values = List,total = total)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host = '192.168.237.81',port=5000,debug=True)
 
 
