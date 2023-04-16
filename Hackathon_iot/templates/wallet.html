@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Global styles */
+    body {
+      font-family: sans-serif;
+    }
+
+    /* Navigation bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #0d8a00;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 0 1rem;
+      cursor: pointer;
+      font-family: serif;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    nav button {
+      border: none;
+      outline: none;
+      background-color: #a092b3;
+      color: #1c1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-family: sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav button:hover {
+      background-color: #f4005a;
+      color: #fff;
+    }
+
+    /* Wallet section */
+    .bg-gray-200 {
+      background-color: #eee;
+      padding: 2rem;
+    }
+
+    .bg-gray-200 p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .bg-gray-200 button {
+      background-color: #0d8a00;
+      color: #fff;
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      outline: none;
+      font-family: sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .bg-gray-200 button:hover {
+      background-color: #f4005a;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    footer p:first-of-type {
+      font-size: 15px;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <nav class="px-4 py-4 bg-green-900 text-white flex justify-center">
+      <ul class="px-28 py-4 flex space-x-11 justify-center">
+        <li class="mx-3 cursor-pointer font-serif">
+          <a href="/">HomePage</a>
+        </li>
+        <li class="mx-3 cursor-pointer font-serif">
+          <a href="/userinfo">MyInfo</a>
+        </li>
+        <li>
+          <button
+            class="cursor-pointer bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300"
+          >
+            <a>Sign Out</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="bg-gray-200">
+      <p class="text-center">Your wallet amount is: {{wallet_money}}</p>
+      <form>
+        <input type="number" id="money_add" name="money_add" />
+        <button
+          onclick="add_money(event)"
+          class="cursor-pointer bg-green-700 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-red-400 my-4"
+        >
+          Add Money
+        </button>
+      </form>
+      <script>
+        var wallet_money = {{wallet_money}}; // initialize wallet_money with the initial value
+        function add_money(event) {
+          event.preventDefault(); // prevent form submission
+          var value = parseInt(document.getElementById("money_add").value); // get the value entered in the input field
+          wallet_money += value; // add the entered value to the wallet_money
+          document.querySelector(".text-center").textContent = "Your wallet amount is: " + wallet_money; // update the text content with the new value
+        }
+      </script>
+    </div>
+      <div>
+        <footer class="bg-gray-800 text-gray-50 text-center">
+          <p>Contact Us</p>
+          <p>Email: ecs@gmail.com</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
