@@ -8,6 +8,6 @@ dynamically.
 we are also having android app which is doing the same work as the web just to make it easier for the user to interact and have countability on our product.
 
 ![WhatsApp Image 2023-04-12 at 22 46 32](https://user-images.githubusercontent.com/104356974/232262187-a2531802-d879-4571-b38f-dc610e66f381.jpg)
-resources :
+# resources :
 tfodcourse from nickjones (youtube)-model training
 reffered mongodb atlas documentation for api linking .
