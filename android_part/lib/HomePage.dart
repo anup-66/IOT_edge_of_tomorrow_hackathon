@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'ItemDetectionPage.dart';
 import 'ItemDetail.dart';
+import 'ItemDetection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +15,26 @@ class _HomePageState extends State<HomePage> {
   // use this controller to get what the user typed
   final _textController = TextEditingController();
 
-  List<ItemDetail> _listItemDetail = [];
+  final List<ItemDetail> _listItemDetail = [
+    ItemDetail(
+        imageName: "jimjam",
+        price: 45,
+        imagePath:
+            "https://storage.googleapis.com/easygrocery/2018/02/Britannia-Treat-Jim-Jam-Biscuits-800x800.jpg",
+        productID: "123456"),
+    ItemDetail(
+        imageName: "facewash",
+        price: 60,
+        imagePath:
+            "https://tse4.mm.bing.net/th?id=OIP.sLdo8NGqMJW46zJrVXdh-QHaJ4&pid=Api&P=0",
+        productID: "1234567"),
+    ItemDetail(
+        imageName: "pepsi",
+        price: 35,
+        imagePath:
+            "https://tse2.mm.bing.net/th?id=OIP.CGZ0WKe4QP8zQvuJ3VYq7AHaHa&pid=Api&P=0",
+        productID: "12345678"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,44 +93,54 @@ class _HomePageState extends State<HomePage> {
                 // setState(() {
                 //   print(_textController);
                 // });
-                String path = "assets/error.jpg";
-                String txt = "Error! No item Found";
-                String string = _textController.text.toLowerCase();
-                // List<String> list = [];
-                // String s = "";
-                // for (int i = 0; i < string.length; i++) {
-                //         if (string[i] != ',') {
-                //                 s = s + string[i];
-                //             } else {
-                //                 list.add(s);
-                //                 s = "";
-                //             }
-                //       }
-                // list.add(s);
-                if (string == "pepsi") {
-                  path = "assets/pepsi.jpg";
-                  txt = "PEPSI";
-                } else if (string == "jimjam") {
-                  path = "assets/jimjam.jpg";
-                  txt = "JIM-JAM";
-                } else if (string == "fashwash") {
-                  path = "assets/fashwash.jpg";
-                  txt = "FASHWASH";
+                // String path = "assets/error.jpg";
+                // String txt = "No item Found";
+                String string = _textController.text;
+                List<String> list = [];
+                String s = "";
+                for (int i = 0; i < string.length; i++) {
+                  if (string[i] != ',') {
+                    s = s + string[i];
+                  } else {
+                    list.add(s);
+                    s = "";
+                  }
                 }
+                list.add(s);
+                for (int i = 0; i < list.length; i++) {
+                  list[i] = list[i].trim();
+                }
+                List<ItemDetail> defaultList = [];
+
+                for (int i = 0; i < _listItemDetail.length; i++) {
+                  for (int j = 0; j < list.length; j++) {
+                    if (_listItemDetail[i].productID == list[j]) {
+                      // _listItemDetail[i].imageName =
+                      //     _listItemDetail[i].imageName.trim();
+                      defaultList.add(_listItemDetail[i]);
+                    }
+                  }
+                }
+
+                if (defaultList.isEmpty) {
+                  return;
+                }
+                // for (int i = 0; i < defaultList.length; i++) {
+                //   defaultList[i].imageName = defaultList[i].imageName.trim();
+                // }
+                
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ItemDetectionPage(
-                              path: path,
-                              txt: txt,
-                            )));
-              },
-              style: const ButtonStyle(
+                        builder: (context) =>
+                            ItemDetection(itemList: defaultList)));
+                },
+                style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(Colors.indigo),
-              ),
-              child: const Text(
-                "submit",
-                style: TextStyle(
+                ),
+                child: const Text(
+                  "submit",
+                  style: TextStyle(
                   color: Color.fromARGB(255, 196, 219, 238),
                 ),
               ),

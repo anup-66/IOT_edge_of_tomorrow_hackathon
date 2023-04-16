@@ -18,7 +18,7 @@ class ItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              itemDetail.imageName,
+              itemDetail.imageName.toUpperCase(),
               style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.indigo[900],
@@ -34,9 +34,17 @@ class ItemCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              height: 8.0,
+
+            Container(
+              height: 50.0,
+              width: 50.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(itemDetail.imagePath),
+                  ),
+              ),
             ),
+
             TextButton.icon(
               onPressed: () {
                 delete();

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<script src="https://cdn.tailwindcss.com"></script>-->
+    <!--    <link rel="stylesheet" href="{{url_for('static',filename = 'css/main.css')}}" />-->
+    <title>Auto AutoCheck-Outs</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+      integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    /* Set the font for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Style the navigation bar */
+    nav {
+      background-color: #4caf50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      margin: 0 10px;
+    }
+
+    nav li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Style the main content area */
+    main {
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    main h1 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    main p {
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    main button {
+      background-color: #4caf50;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0 10px;
+      padding: 10px 20px;
+    }
+
+    main button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+  <body>
+    <nav class="px-4 py-4 bg-green-900 text-white flex justify-center">
+      <!--giving margin of 4rem on x-axis-->
+      <ul class="px-28 py-4 flex space-x-11 justify-center">
+        <li class="mx-3 cursor-pointer font-serif">
+          <a href="/userinfo">MyInfo</a>
+        </li>
+        <li class="mx-3 cursor-pointer font-serif">
+          <a href="/wallet">Wallet</a>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary btn-lg">
+            Sign Out
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main class="bg-fuchsia-100 justify-around">
+      <div class="main bg-gray-300 py-10">
+        <div class="text-3xl">
+          <h1 class="text-purple-900 text-center font-bold">Auto Check-Outs</h1>
+        </div>
+        <p class="px-6 py-3 text-center">
+          Welcome Back! You can check your transaction history and generate your
+          invoice by clicking on the respective buttons given below. Similarly,
+          you can navigate to your personal info and check your wallet balance
+          by clicking on the links in the navigation bar. We are a growing
+          community and we would love your suggestions that we can implement for
+          better experience. If you have any suggestions, you can write to us at
+          the given email address. Thank You! Happy Shopping!
+        </p>
+        <form method="post" action="/predicted_val">
+          <div class="my-4 flex items-center">
+            <button
+              class="bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300 mx-4"
+            >
+              Transaction History
+            </button>
+
+            <button
+              onclick="display_text()"
+              class="bg-purple-800 text-gray-200 font-sans px-3 py-2 rounded-2xl hover:text-slate-700 hover:bg-fuchsia-300 mx-4"
+            >
+              Generate Invoice
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
